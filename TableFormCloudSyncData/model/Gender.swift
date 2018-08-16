@@ -16,6 +16,8 @@ public class Gender: ManagedObject {
         return NSFetchRequest<Gender>(entityName: "Gender")
     }
     
+    @NSManaged var lastModifiedDate: Date?
+    @NSManaged var markedForDeletion: NSNumber?
     @NSManaged public var name: String?
     @NSManaged public var employees: NSSet?
 
