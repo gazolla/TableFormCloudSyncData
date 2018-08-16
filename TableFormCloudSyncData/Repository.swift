@@ -17,19 +17,19 @@ protocol RepositoryUser {
     
 }
 
-protocol RepositoryTasks {
+protocol RepositoryEmployees {
     
-    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void)
-    func queryTasksInDay (_ day: Date) -> [Task]
-    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void)
-    func queryUnsyncedTasks() -> [Task]
-    func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void)
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void)
-    // Marks the Task as deleted. If permanently is true it will be removed from db
-    func deleteTask (_ task: Task, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void))
-    func deleteTask (objectId: String, completion: @escaping ((_ success: Bool) -> Void))
-    // Save a task and returns the same task with a taskId generated if it didn't had
-    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void))
+    func queryEmployees (startDate: Date, endDate: Date, completion: @escaping ([Employee], NSError?) -> Void)
+    func queryEmployeesInDay (_ day: Date) -> [Employee]
+    func queryEmployeesInDay (_ day: Date, completion: @escaping ([Employee], NSError?) -> Void)
+    func queryUnsyncedEmployees() -> [Employee]
+    func queryDeletedEmployees (_ completion: @escaping ([Employee]) -> Void)
+    func queryUpdates (_ completion: @escaping ([Employee], [String], NSError?) -> Void)
+    // Marks the Employee as deleted. If permanently is true it will be removed from db
+    func deleteEmployee (_ employee: Employee, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void))
+    func deleteEmployee (objectId: String, completion: @escaping ((_ success: Bool) -> Void))
+    // Save a employee and returns the same employee with a employeeId generated if it didn't had
+    func saveEmployee (_ employee: Employee, completion: @escaping ((_ employee: Employee) -> Void))
     
 }
 
@@ -40,4 +40,4 @@ protocol RepositorySettings {
     
 }
 
-typealias Repository = RepositoryUser & RepositoryTasks & RepositorySettings
+typealias Repository = RepositoryUser & RepositoryEmployees & RepositorySettings

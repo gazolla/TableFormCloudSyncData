@@ -24,6 +24,8 @@
 		C3ABE003212305D2005A704D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABE002212305D2005A704D /* Repository.swift */; };
 		C3ABE0052123061A005A704D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABE0042123061A005A704D /* User.swift */; };
 		C3ABE007212306B3005A704D /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABE006212306B3005A704D /* Sync.swift */; };
+		C3DBFCBC2125AB7D00C0F8F5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DBFCBB2125AB7D00C0F8F5 /* Settings.swift */; };
+		C3DBFCBF2125AC2000C0F8F5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DBFCBE2125AC2000C0F8F5 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		C3ABE002212305D2005A704D /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		C3ABE0042123061A005A704D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C3ABE006212306B3005A704D /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
+		C3DBFCBB2125AB7D00C0F8F5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C3DBFCBE2125AC2000C0F8F5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		C3ABDFC1212300AD005A704D /* TableFormCloudSyncData */ = {
 			isa = PBXGroup;
 			children = (
+				C3DBFCBD2125AC0F00C0F8F5 /* Extensions */,
 				C3ABDFED212303C7005A704D /* CoreData */,
 				C3ABDFEB212303C6005A704D /* GenericTableView */,
 				C3ABDFF4212303C7005A704D /* model */,
@@ -183,8 +188,17 @@
 				C3ABDFF5212303C7005A704D /* Gender.swift */,
 				C3ABDFF6212303C7005A704D /* Employee.swift */,
 				C3ABE0042123061A005A704D /* User.swift */,
+				C3DBFCBB2125AB7D00C0F8F5 /* Settings.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		C3DBFCBD2125AC0F00C0F8F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C3DBFCBE2125AC2000C0F8F5 /* UserDefaults.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,12 +335,14 @@
 				C3ABDFFE212303C7005A704D /* Employee.swift in Sources */,
 				C3ABDFF8212303C7005A704D /* CoreDataManager.swift in Sources */,
 				C3ABDFFC212303C7005A704D /* FormCells.swift in Sources */,
+				C3DBFCBC2125AB7D00C0F8F5 /* Settings.swift in Sources */,
 				C3ABDFC3212300AD005A704D /* AppDelegate.swift in Sources */,
 				C3ABE003212305D2005A704D /* Repository.swift in Sources */,
 				C3ABE007212306B3005A704D /* Sync.swift in Sources */,
 				C3ABDFFD212303C7005A704D /* Gender.swift in Sources */,
 				C3ABDFF9212303C7005A704D /* FormViewController.swift in Sources */,
 				C3ABE0052123061A005A704D /* User.swift in Sources */,
+				C3DBFCBF2125AC2000C0F8F5 /* UserDefaults.swift in Sources */,
 				C3ABE001212303F0005A704D /* TableFormCoreData.xcdatamodeld in Sources */,
 				C3ABDFFA212303C7005A704D /* FormModel.swift in Sources */,
 				C3ABDFF7212303C7005A704D /* TableViewController.swift in Sources */,
