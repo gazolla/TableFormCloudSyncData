@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080DE4ED2127279E00A8D717 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DE4EC2127279E00A8D717 /* String.swift */; };
+		080DE4EF21272B4C00A8D717 /* CDEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DE4EE21272B4C00A8D717 /* CDEmployee.swift */; };
 		C3ABDFC3212300AD005A704D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABDFC2212300AD005A704D /* AppDelegate.swift */; };
 		C3ABDFC5212300AE005A704D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3ABDFC4212300AE005A704D /* Assets.xcassets */; };
 		C3ABDFC8212300AE005A704D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3ABDFC6212300AE005A704D /* LaunchScreen.storyboard */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080DE4EC2127279E00A8D717 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		080DE4EE21272B4C00A8D717 /* CDEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDEmployee.swift; sourceTree = "<group>"; };
 		C3ABDFBF212300AD005A704D /* TableFormCloudSyncData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableFormCloudSyncData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3ABDFC2212300AD005A704D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3ABDFC4212300AE005A704D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				C3ABDFEE212303C7005A704D /* CoreDataManager.swift */,
+				080DE4EE21272B4C00A8D717 /* CDEmployee.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				C3DBFCBE2125AC2000C0F8F5 /* UserDefaults.swift */,
+				080DE4EC2127279E00A8D717 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 				C3ABDFFE212303C7005A704D /* Employee.swift in Sources */,
 				C3ABDFF8212303C7005A704D /* CoreDataManager.swift in Sources */,
 				C3ABDFFC212303C7005A704D /* FormCells.swift in Sources */,
+				080DE4EF21272B4C00A8D717 /* CDEmployee.swift in Sources */,
 				C3DBFCBC2125AB7D00C0F8F5 /* Settings.swift in Sources */,
 				C3ABDFC3212300AD005A704D /* AppDelegate.swift in Sources */,
 				C3ABE003212305D2005A704D /* Repository.swift in Sources */,
@@ -345,6 +352,7 @@
 				C3DBFCBF2125AC2000C0F8F5 /* UserDefaults.swift in Sources */,
 				C3ABE001212303F0005A704D /* TableFormCoreData.xcdatamodeld in Sources */,
 				C3ABDFFA212303C7005A704D /* FormModel.swift in Sources */,
+				080DE4ED2127279E00A8D717 /* String.swift in Sources */,
 				C3ABDFF7212303C7005A704D /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

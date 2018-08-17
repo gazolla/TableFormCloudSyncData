@@ -41,3 +41,10 @@ protocol RepositorySettings {
 }
 
 typealias Repository = RepositoryUser & RepositoryEmployees & RepositorySettings
+
+
+
+protocol Repo {
+    associatedtype T
+    func save (_ object: T, completion: @escaping ((_ object: T) -> Void))
+}
