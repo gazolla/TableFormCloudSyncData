@@ -14,6 +14,10 @@ class CDEmployee: Repo {
     var context:NSManagedObjectContext?
     typealias T = [String:AnyObject?]
     
+    init(context:NSManagedObjectContext){
+        self.context = context
+    }
+    
     func save(_ object: [String:AnyObject?], completion: @escaping (([String:AnyObject?]) -> Void)) {
         guard let context = context else { return }
         do{

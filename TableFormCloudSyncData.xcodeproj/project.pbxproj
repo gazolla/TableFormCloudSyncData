@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		080DE4ED2127279E00A8D717 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DE4EC2127279E00A8D717 /* String.swift */; };
 		080DE4EF21272B4C00A8D717 /* CDEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DE4EE21272B4C00A8D717 /* CDEmployee.swift */; };
+		083309082128454200331596 /* EmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083309062128454200331596 /* EmployeeController.swift */; };
+		083309092128454200331596 /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083309072128454200331596 /* EmployeesController.swift */; };
 		C3ABDFC3212300AD005A704D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABDFC2212300AD005A704D /* AppDelegate.swift */; };
 		C3ABDFC5212300AE005A704D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3ABDFC4212300AE005A704D /* Assets.xcassets */; };
 		C3ABDFC8212300AE005A704D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3ABDFC6212300AE005A704D /* LaunchScreen.storyboard */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		080DE4EC2127279E00A8D717 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		080DE4EE21272B4C00A8D717 /* CDEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDEmployee.swift; sourceTree = "<group>"; };
+		083309062128454200331596 /* EmployeeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeController.swift; sourceTree = "<group>"; };
+		083309072128454200331596 /* EmployeesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
 		C3ABDFBF212300AD005A704D /* TableFormCloudSyncData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableFormCloudSyncData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3ABDFC2212300AD005A704D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3ABDFC4212300AE005A704D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				C3ABDFF4212303C7005A704D /* model */,
 				C3ABDFEF212303C7005A704D /* TableForm */,
 				C3ABDFC2212300AD005A704D /* AppDelegate.swift */,
+				083309062128454200331596 /* EmployeeController.swift */,
+				083309072128454200331596 /* EmployeesController.swift */,
 				C3ABDFC4212300AE005A704D /* Assets.xcassets */,
 				C3ABDFC6212300AE005A704D /* LaunchScreen.storyboard */,
 				C3ABDFC9212300AE005A704D /* Info.plist */,
@@ -344,6 +350,7 @@
 				080DE4EF21272B4C00A8D717 /* CDEmployee.swift in Sources */,
 				C3DBFCBC2125AB7D00C0F8F5 /* Settings.swift in Sources */,
 				C3ABDFC3212300AD005A704D /* AppDelegate.swift in Sources */,
+				083309092128454200331596 /* EmployeesController.swift in Sources */,
 				C3ABE003212305D2005A704D /* Repository.swift in Sources */,
 				C3ABE007212306B3005A704D /* Sync.swift in Sources */,
 				C3ABDFFD212303C7005A704D /* Gender.swift in Sources */,
@@ -352,6 +359,7 @@
 				C3DBFCBF2125AC2000C0F8F5 /* UserDefaults.swift in Sources */,
 				C3ABE001212303F0005A704D /* TableFormCoreData.xcdatamodeld in Sources */,
 				C3ABDFFA212303C7005A704D /* FormModel.swift in Sources */,
+				083309082128454200331596 /* EmployeeController.swift in Sources */,
 				080DE4ED2127279E00A8D717 /* String.swift in Sources */,
 				C3ABDFF7212303C7005A704D /* TableViewController.swift in Sources */,
 			);

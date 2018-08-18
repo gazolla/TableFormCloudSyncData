@@ -12,11 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let coreDataManager:CoreDataManager = CoreDataManager.init(modelName: "TableFormCoreData")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        // Override point for customization after application launch.
+        let main = EmployeesController()
+        main.context = coreDataManager.mainManagedObjectContext
+        let nav = UINavigationController(rootViewController: main)
+        self.window!.rootViewController = nav
         self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
         return true
