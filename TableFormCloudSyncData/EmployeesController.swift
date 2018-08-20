@@ -54,7 +54,15 @@ class EmployeesController: UITableViewController {
     }
     
     @objc func addEmployeeTapped(){
-        employeeCtrl.data = Employee().emptyDic()
+        var data = Employee().emptyDic()
+        data.removeValue(forKey: "lastModifiedDate")
+        data.removeValue(forKey: "markedForDeletion")
+        employeeCtrl.data = data
+        
+        let nullDate:NSDate? = nil
+        let hiddenData:[String:AnyObject?] = ["lastModifiedDate":nullDate, "markedForDeletion":0.0 as NSNumber?]
+        employeeCtrl.hiddenData = hiddenData
+        
         self.navigationController?.pushViewController(employeeCtrl, animated: true)
     }
     
@@ -82,12 +90,10 @@ extension EmployeesController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         guard let fetchedRstCtrl = self.fetchedResultsController, let context = context else { return }
-        let note = fetchedRstCtrl.object(at: indexPath)
-        context.delete(note)
-        do{
-            try context.save()
-        } catch {
-            print(error)
+        let obj = fetchedRstCtrl.object(at: indexPath)
+        let employee = CDEmployee(context:context)
+        employee.delete(obj, permanently: true) { (ok) in
+            // delete on cloudkit
         }
     }
     

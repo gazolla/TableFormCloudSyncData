@@ -46,5 +46,12 @@ typealias Repository = RepositoryUser & RepositoryEmployees & RepositorySettings
 
 protocol Repo {
     associatedtype T
-    func save (_ object: T, completion: @escaping ((_ object: T) -> Void))
+    func save (_ object:[String:AnyObject?], completion: @escaping ((_ object: T) -> Void))
+    func delete (objectId: String, completion: @escaping ((_ success: Bool) -> Void))
+    func delete (_ object: T, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void))
+    func queryUnsynced() -> [T]?
+    func queryDeleted (_ completion: @escaping ([T]) -> Void)
+    func query (completion: @escaping ([T], NSError?) -> Void)
+
+
 }

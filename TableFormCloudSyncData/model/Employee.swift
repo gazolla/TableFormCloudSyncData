@@ -17,7 +17,7 @@ public class Employee: ManagedObject {
         return NSFetchRequest<Employee>(entityName: "Employee")
     }
     
-    @NSManaged public var lastModifiedDate: Date?
+    @NSManaged public var lastModifiedDate: NSDate?
     @NSManaged public var markedForDeletion: NSNumber?
     @NSManaged public var email: String?
     @NSManaged public var name: String?

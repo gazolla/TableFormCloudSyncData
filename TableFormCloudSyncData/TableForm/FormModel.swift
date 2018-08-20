@@ -69,8 +69,14 @@ public class ManagedObject: NSManagedObject, FormModel {
             let attrClass = attr.attributeValueClassName
             print(attrClass!)
             if attrClass == "NSDate" {
-                let dt = dateFmtr.date(from: (dic[name] as? String)!)! as NSDate
-                obj.setValue(dt, forKey: name)
+                let dtStr = dic[name] as? String
+                if dtStr != nil {
+                    let dt = dateFmtr.date(from: dtStr!)! as NSDate
+                    obj.setValue(dt, forKey: name)
+                } else {
+                    let dt:NSDate? = nil
+                    obj.setValue(dt, forKey: name)
+                }
             } else if attrClass == "NSDecimalNumber" {
                 let numberString = dic[name] as! String
                 let decimalSeparator = Locale.current.decimalSeparator ?? "."
@@ -84,7 +90,10 @@ public class ManagedObject: NSManagedObject, FormModel {
             }
         }
         for (name, _) in  obj.entity.relationshipsByName {
-            obj.setValue(dic[name] as Any, forKey: name)
+            if (dic[name] as? String) != nil  {
+                obj.setValue(dic[name] as Any, forKey: name)
+            }
+            
         }
     }
 }
