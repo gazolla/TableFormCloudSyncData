@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 class EmployeesController: UITableViewController {
     
@@ -51,7 +52,31 @@ class EmployeesController: UITableViewController {
         self.navigationItem.rightBarButtonItem = btn
         
         loadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addItem), name: NSNotification.Name(rawValue: "AddEmployee"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteItem), name: NSNotification.Name(rawValue: "DeleteEmployee"), object: nil)
+        
     }
+    
+    
+    @objc func addItem(notification:Notification){
+        if let record = notification.object as? CKRecord{
+           // add(record)
+        } else {
+            print("record not received")
+        }
+    }
+    
+    @objc func deleteItem(notification:Notification){
+        if let recordId = notification.object as? CKRecordID{
+          //  delete(recordId)
+        } else {
+            print("record not received")
+        }
+    }
+
+    
+    
     
     @objc func addEmployeeTapped(){
         var data = Employee().emptyDic()
