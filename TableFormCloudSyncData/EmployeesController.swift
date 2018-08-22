@@ -55,37 +55,41 @@ class EmployeesController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(addItem), name: NSNotification.Name(rawValue: "AddEmployee"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteItem), name: NSNotification.Name(rawValue: "DeleteEmployee"), object: nil)
-        
     }
     
-    
     @objc func addItem(notification:Notification){
+        guard let context = context else { return }
         if let record = notification.object as? CKRecord{
-           // add(record)
+           let coreData = CDEmployee(context: context)
+            coreData.save(record) { (record) in
+              // something to do after save.....
+            }
         } else {
             print("record not received")
         }
     }
     
     @objc func deleteItem(notification:Notification){
+        guard let context = context else { return }
         if let recordId = notification.object as? CKRecordID{
-          //  delete(recordId)
+          let coreData = CDEmployee(context: context)
+            coreData.delete(objectId: recordId.recordName) { (success) in
+                // something to do after delete....
+            }
         } else {
             print("record not received")
         }
     }
 
-    
-    
-    
     @objc func addEmployeeTapped(){
         var data = Employee().emptyDic()
         data.removeValue(forKey: "lastModifiedDate")
         data.removeValue(forKey: "markedForDeletion")
+        data.removeValue(forKey: "objectId")
         employeeCtrl.data = data
         
         let nullDate:NSDate? = nil
-        let hiddenData:[String:AnyObject?] = ["lastModifiedDate":nullDate, "markedForDeletion":0.0 as NSNumber?]
+        let hiddenData:[String:AnyObject?] = ["lastModifiedDate":nullDate, "markedForDeletion":0.0 as NSNumber?, "objectId":nil]
         employeeCtrl.hiddenData = hiddenData
         
         self.navigationController?.pushViewController(employeeCtrl, animated: true)

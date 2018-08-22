@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CloudKit
 
 protocol RepositoryUser {
     
@@ -47,6 +48,7 @@ typealias Repository = RepositoryUser & RepositoryEmployees & RepositorySettings
 protocol Repo {
     associatedtype T
     func save (_ object:[String:AnyObject?], completion: @escaping ((_ object: T) -> Void))
+    func save (_ object:CKRecord, completion: @escaping ((_ object: CKRecord) -> Void))
     func delete (objectId: String, completion: @escaping ((_ success: Bool) -> Void))
     func delete (_ object: T, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void))
     func queryUnsynced() -> [T]?

@@ -10,9 +10,14 @@ import Foundation
 import CloudKit
 
 class CKEmployee:Repo{
+    
     typealias T = CKRecord
     let subscriptionID = "EmployeeSubID"
     var cloudKitObserver:NSObjectProtocol?
+    
+    func save(_ object: CKRecord, completion: @escaping ((CKRecord) -> Void)) {
+        
+    }
 
     func save(_ object: [String : AnyObject?], completion: @escaping ((CKRecord) -> Void)) {
         let f = DateFormatter()

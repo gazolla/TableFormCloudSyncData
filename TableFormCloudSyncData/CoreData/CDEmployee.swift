@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CloudKit
 
 class CDEmployee: Repo {
     var context:NSManagedObjectContext?
@@ -28,8 +29,21 @@ class CDEmployee: Repo {
         }
     }
     
+    func save(_ object: CKRecord, completion: @escaping ((CKRecord) -> Void)) {
+        let emp = CKEmployee().toDic(record: object)
+        save(emp) { (employee) in }
+    }
+
     func delete(objectId: String, completion: @escaping ((Bool) -> Void)) {
-        
+        let strPredicate = "objectId == '\(objectId)'"
+        let predicate = NSPredicate(format: strPredicate)
+        queryWithPredicate(predicate) { (employees, error) in
+            if let employee = employees.first {
+                self.delete(employee, permanently: true, completion: { (success) in
+                    completion(success)
+                })
+            }
+        }
     }
     
     func delete(_ object: Employee, permanently: Bool, completion: @escaping ((Bool) -> Void)) {
@@ -85,6 +99,18 @@ class CDEmployee: Repo {
         do {
             let result = try context.fetch(fetchRequest)
              completion(result, nil)
+        } catch {
+            print("Failed")
+        }
+    }
+    
+    func queryWithPredicate(_ predicate: NSPredicate, completion: @escaping ([Employee], NSError?) -> Void) {
+        guard let context = context else { return }
+        let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
+        fetchRequest.predicate = predicate
+        do {
+            let result = try context.fetch(fetchRequest)
+            completion(result, nil)
         } catch {
             print("Failed")
         }
