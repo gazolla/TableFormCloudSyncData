@@ -119,9 +119,13 @@ class EmployeeController: FormViewController {
     @objc func saveTapped(){
         guard let context = context else { return }
         let dic = self.getFormData()
-        let employee = CDEmployee(context:context)
-        employee.save(dic) { (employee) in
+        let localEmployee = CDEmployee(context:context)
+        localEmployee.save(dic) { (employee) in
             // Sync with Cloudkit here...
+            let remoteEmployee = CKEmployee()
+            remoteEmployee.save(employee.objToDic(), completion: { (savedRecord) in
+                // It should be saved at cloudkit at this point...
+            })
         }
         self.view.endEditing(true)
         navigationController?.popViewController(animated: true)

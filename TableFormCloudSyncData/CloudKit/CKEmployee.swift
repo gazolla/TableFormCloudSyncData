@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 
+
 class CKEmployee:Repo{
     
     typealias T = CKRecord
@@ -24,7 +25,9 @@ class CKEmployee:Repo{
         f.dateStyle = .medium
         
         let database = CKContainer.default().privateCloudDatabase
-        if let record = object["record"] as? CKRecord {
+        if let recordId = object["objectId"] as? String {
+            let recId = CKRecordID(recordName: recordId)
+            let record = CKRecord(recordType: "Employee", recordID: recId)
             record["name"] = object["name"] as? CKRecordValue
             record["email"] = object["email"] as? CKRecordValue
             record["birthday"] = f.date(from: (object["birthday"] as! String))! as CKRecordValue
@@ -32,6 +35,8 @@ class CKEmployee:Repo{
             record["company"] = object["company"] as? CKRecordValue
             record["position"] = object["position"] as? CKRecordValue
             record["gender"] = object["gender"] as? CKRecordValue
+            record["modificationDate"] = object["modificationDate"] as? CKRecordValue
+            record["objectId"] = object["objectId"] as? CKRecordValue
             database.save(record) { (record, error) in
                 if let error = error {
                     print(error.localizedDescription)

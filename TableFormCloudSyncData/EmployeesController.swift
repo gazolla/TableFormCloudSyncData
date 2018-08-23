@@ -60,6 +60,9 @@ class EmployeesController: UITableViewController {
     @objc func addItem(notification:Notification){
         guard let context = context else { return }
         if let record = notification.object as? CKRecord{
+            // ================================
+            // ToDo: Identify if the notification was fired by this User !!!
+            //==================================
            let coreData = CDEmployee(context: context)
             coreData.save(record) { (record) in
               // something to do after save.....
