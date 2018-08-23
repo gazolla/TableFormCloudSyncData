@@ -7,19 +7,75 @@
 //
 
 import UIKit
+import CloudKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    let coreDataManager:CoreDataManager = CoreDataManager.init(modelName: "TableFormCoreData")
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent: UNNotification,
+                                withCompletionHandler: @escaping (UNNotificationPresentationOptions)->()) {
+        print("userNotificationCenter WillPresent")
+        withCompletionHandler([.alert, .sound, .badge])
+    }
+    
+    fileprivate func requestNotificationAuthorization(_ application: UIApplication) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("D'oh: \(error.localizedDescription)")
+            }
+            if granted{
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                    print("application registerForRemoteNotifications")
+                }
+            }
+        }
+        UNUserNotificationCenter.current().delegate = self
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        // Override point for customization after application launch.
+        let main = EmployeesController()
+        main.context = coreDataManager.mainManagedObjectContext
+        let nav = UINavigationController(rootViewController: main)
+        self.window!.rootViewController = nav
         self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let employee = CKEmployee()
+        employee.iCloudSubscribe()
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let userInfo = userInfo as? [String: NSObject] {
+            
+            let notification: CKNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)
+            
+            if (notification.notificationType == CKNotificationType.query) {
+                let queryNotification = notification as! CKQueryNotification
+                let recordID = queryNotification.recordID!
+                if queryNotification.queryNotificationReason == .recordDeleted {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DeleteEmployee"), object: recordID)
+                } else {
+                    CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID) { (record, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AddEmployee"), object: record)
+                    }
+                }
+            }
+        }
+        
+        completionHandler(.newData)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
